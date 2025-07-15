@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>Atlantis Lite - Bootstrap 4 Admin Dashboard</title>
+	<link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../assets/css/atlantis.min.css">
+	<link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../assets/css/atlantis.min.css">
+
+	<link rel="stylesheet" href="../assets/css/detailbarang.css"> 
+
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+	<style>
+    .thumbnail {
+        width: 100px; height: 100px; object-fit: cover;
+        cursor: pointer; opacity: 0.6; transition: opacity 0.2s;
+    }
+    .thumbnail:hover { opacity: 1; }
+    .thumbnail.active { opacity: 1; border: 2px solid #0d6efd; }
+    .thumbnail-container { display: flex; gap: 10px; }
+	</style>
+	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
+	<link rel="icon" href="../assets/img/icon.ico" type="image/x-icon"/>
+
+	<!-- Fonts and icons -->
+	<script src="../assets/js/plugin/webfont/webfont.min.js"></script>
+	<script>
+		WebFont.load({
+			google: {"families":["Lato:300,400,700,900"]},
+			custom: {"families":["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ['../assets/css/fonts.min.css']},
+			active: function() {
+				sessionStorage.fonts = true;
+			}
+		});
+	</script>
+
+	<!-- CSS Files -->
+	<link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../assets/css/atlantis.min.css">
+
+	<!-- CSS Just for demo purpose, don't include it in your project -->
+	<link rel="stylesheet" href="../assets/css/demo.css">
+
+	<style>
+      .sidebar.sidebar-style-2 .nav.nav-primary .nav-item.active > a {
+        background: #D4AF37 !important;
+      }
+
+      .sidebar.sidebar-style-2 .nav.nav-primary .nav-item.active > a *,
+      .sidebar.sidebar-style-2 .nav.nav-primary .nav-item.active > a:hover * {
+        color: #ffffff !important;
+      }
+    </style>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="main-header">
+			<!-- Logo Header -->
+			<div class="logo-header" data-background-color="white">
+				
+				<a href="index.html" class="logo">
+					<img src="../assets/img/logobpk.png" alt="navbar brand" class="navbar-brand" style="width: 150px; height: auto;">
+				</a>
+				<button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon">
+						<i class="icon-menu"></i>
+					</span>
+				</button>
+				<button class="topbar-toggler more"><i class="icon-options-vertical"></i></button>
+				<div class="nav-toggle">
+					<button class="btn btn-toggle toggle-sidebar">
+						<i class="icon-menu"></i>
+					</button>
+				</div>
+			</div>
+			<!-- End Logo Header -->
+
+			<!-- Navbar Header -->
+			 <nav 
+				id="navbar-bpk" 
+				class="navbar navbar-header navbar-expand-lg brown-bg"
+				style="background-color: #D4AF37 !important;"
+				>
+				
+				<div class="container-fluid">
+					<div class="collapse" id="search-nav">
+						<form class="navbar-left navbar-form nav-search mr-md-3">
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<button type="submit" class="btn btn-search pr-1">
+										<i class="fa fa-search search-icon"></i>
+									</button>
+								</div>
+								<input type="text" placeholder="Search ..." class="form-control">
+							</div>
+						</form>
+					</div>
+					<ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
+						<li class="nav-item toggle-nav-search hidden-caret">
+							<a class="nav-link" data-toggle="collapse" href="#search-nav" role="button" aria-expanded="false" aria-controls="search-nav">
+								<i class="fa fa-search"></i>
+							</a>
+						</li>
+						<li class="nav-item dropdown hidden-caret">
+							<a class="nav-link dropdown-toggle" href="#" id="messageDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<i class="fa fa-envelope"></i>
+							</a>
+							<ul class="dropdown-menu messages-notif-box animated fadeIn" aria-labelledby="messageDropdown">
+								<li>
+									<div class="dropdown-title d-flex justify-content-between align-items-center">
+										Messages 									
+										<a href="#" class="small">Mark all as read</a>
+									</div>
+								</li>
+								<li>
+									<div class="message-notif-scroll scrollbar-outer">
+										<div class="notif-center">
+											<a href="#">
+												<div class="notif-img"> 
+													<img src="../assets/img/jm_denis.jpg" alt="Img Profile">
+												</div>
+												<div class="notif-content">
+													<span class="subject">Jimmy Denis</span>
+													<span class="block">
+														How are you ?
+													</span>
+													<span class="time">5 minutes ago</span> 
+												</div>
+											</a>
+											<a href="#">
+												<div class="notif-img"> 
+													<img src="../assets/img/chadengle.jpg" alt="Img Profile">
+												</div>
+												<div class="notif-content">
+													<span class="subject">Chad</span>
+													<span class="block">
+														Ok, Thanks !
+													</span>
+													<span class="time">12 minutes ago</span> 
+												</div>
+											</a>
+											<a href="#">
+												<div class="notif-img"> 
+													<img src="../assets/img/mlane.jpg" alt="Img Profile">
+												</div>
+												<div class="notif-content">
+													<span class="subject">Jhon Doe</span>
+													<span class="block">
+														Ready for the meeting today...
+													</span>
+													<span class="time">12 minutes ago</span> 
+												</div>
+											</a>
+											<a href="#">
+												<div class="notif-img"> 
+													<img src="../assets/img/talha.jpg" alt="Img Profile">
+												</div>
+												<div class="notif-content">
+													<span class="subject">Talha</span>
+													<span class="block">
+														Hi, Apa Kabar ?
+													</span>
+													<span class="time">17 minutes ago</span> 
+												</div>
+											</a>
+										</div>
+									</div>
+								</li>
+								<li>
+									<a class="see-all" href="javascript:void(0);">See all messages<i class="fa fa-angle-right"></i> </a>
+								</li>
+							</ul>
+						</li>
+						<li class="nav-item dropdown hidden-caret">
+							<a class="nav-link dropdown-toggle" href="#" id="notifDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<i class="fa fa-bell"></i>
+								<span class="notification">4</span>
+							</a>
+							<ul class="dropdown-menu notif-box animated fadeIn" aria-labelledby="notifDropdown">
+								<li>
+									<div class="dropdown-title">You have 4 new notification</div>
+								</li>
+								<li>
+									<div class="notif-scroll scrollbar-outer">
+										<div class="notif-center">
+											<a href="#">
+												<div class="notif-icon notif-primary"> <i class="fa fa-user-plus"></i> </div>
+												<div class="notif-content">
+													<span class="block">
+														New user registered
+													</span>
+													<span class="time">5 minutes ago</span> 
+												</div>
+											</a>
+											<a href="#">
+												<div class="notif-icon notif-success"> <i class="fa fa-comment"></i> </div>
+												<div class="notif-content">
+													<span class="block">
+														Rahmad commented on Admin
+													</span>
+													<span class="time">12 minutes ago</span> 
+												</div>
+											</a>
+											<a href="#">
+												<div class="notif-img"> 
+													<img src="../assets/img/profile2.jpg" alt="Img Profile">
+												</div>
+												<div class="notif-content">
+													<span class="block">
+														Reza send messages to you
+													</span>
+													<span class="time">12 minutes ago</span> 
+												</div>
+											</a>
+											<a href="#">
+												<div class="notif-icon notif-danger"> <i class="fa fa-heart"></i> </div>
+												<div class="notif-content">
+													<span class="block">
+														Farrah liked Admin
+													</span>
+													<span class="time">17 minutes ago</span> 
+												</div>
+											</a>
+										</div>
+									</div>
+								</li>
+								<li>
+									<a class="see-all" href="javascript:void(0);">See all notifications<i class="fa fa-angle-right"></i> </a>
+								</li>
+							</ul>
+						</li>
+						<li class="nav-item dropdown hidden-caret">
+							<a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="false">
+								<i class="fas fa-layer-group"></i>
+							</a>
+							<div class="dropdown-menu quick-actions quick-actions-info animated fadeIn">
+								<div class="quick-actions-header">
+									<span class="title mb-1">Quick Actions</span>
+									<span class="subtitle op-8">Shortcuts</span>
+								</div>
+								<div class="quick-actions-scroll scrollbar-outer">
+									<div class="quick-actions-items">
+										<div class="row m-0">
+											<a class="col-6 col-md-4 p-0" href="#">
+												<div class="quick-actions-item">
+													<i class="flaticon-file-1"></i>
+													<span class="text">Generated Report</span>
+												</div>
+											</a>
+											<a class="col-6 col-md-4 p-0" href="#">
+												<div class="quick-actions-item">
+													<i class="flaticon-database"></i>
+													<span class="text">Create New Database</span>
+												</div>
+											</a>
+											<a class="col-6 col-md-4 p-0" href="#">
+												<div class="quick-actions-item">
+													<i class="flaticon-pen"></i>
+													<span class="text">Create New Post</span>
+												</div>
+											</a>
+											<a class="col-6 col-md-4 p-0" href="#">
+												<div class="quick-actions-item">
+													<i class="flaticon-interface-1"></i>
+													<span class="text">Create New Task</span>
+												</div>
+											</a>
+											<a class="col-6 col-md-4 p-0" href="#">
+												<div class="quick-actions-item">
+													<i class="flaticon-list"></i>
+													<span class="text">Completed Tasks</span>
+												</div>
+											</a>
+											<a class="col-6 col-md-4 p-0" href="#">
+												<div class="quick-actions-item">
+													<i class="flaticon-file"></i>
+													<span class="text">Create New Invoice</span>
+												</div>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li class="nav-item dropdown hidden-caret">
+							<a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
+								<div class="avatar-sm">
+									<img src="../assets/img/profile.jpg" alt="..." class="avatar-img rounded-circle">
+								</div>
+							</a>
+							<ul class="dropdown-menu dropdown-user animated fadeIn">
+								<div class="dropdown-user-scroll scrollbar-outer">
+									<li>
+										<div class="user-box">
+											<div class="avatar-lg"><img src="../assets/img/profile.jpg" alt="image profile" class="avatar-img rounded"></div>
+											<div class="u-text">
+												<h4>Hizrian</h4>
+												<p class="text-muted">hello@example.com</p><a href="profile.html" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="dropdown-divider"></div>
+										<a class="dropdown-item" href="#">My Profile</a>
+										<a class="dropdown-item" href="#">My Balance</a>
+										<a class="dropdown-item" href="#">Inbox</a>
+										<div class="dropdown-divider"></div>
+										<a class="dropdown-item" href="#">Account Setting</a>
+										<div class="dropdown-divider"></div>
+										<a class="dropdown-item" href="#">Logout</a>
+									</li>
+								</div>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</nav>
+			<!-- End Navbar -->
+		</div>
+
+		<!-- Sidebar -->
+      <div class="sidebar sidebar-style-2">
+        <div class="sidebar-wrapper scrollbar scrollbar-inner">
+          <div class="sidebar-content">
+            <div class="user">
+              <div class="avatar-sm float-left mr-2">
+                <img
+                  src="../assets/img/profile.jpg"
+                  alt="..."
+                  class="avatar-img rounded-circle"
+                />
+              </div>
+              <div class="info">
+                <a
+                  data-toggle="collapse"
+                  href="#collapseExample"
+                  aria-expanded="true"
+                >
+                  <span>
+                    Hizrian
+                    <span class="user-level">Administrator</span>
+                    <span class="caret"></span>
+                  </span>
+                </a>
+                <div class="clearfix"></div>
+
+                <div class="collapse in" id="collapseExample">
+                  <ul class="nav">
+                    <li>
+                      <a href="#profile">
+                        <span class="link-collapse">My Profile</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#edit">
+                        <span class="link-collapse">Edit Profile</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#settings">
+                        <span class="link-collapse">Settings</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <ul class="nav nav-primary">
+              
+              <li class="nav-section">
+                <span class="sidebar-mini-icon">
+                  <i class="fa fa-ellipsis-h"></i>
+                </span>
+                <h4 class="text-section">Components</h4>
+              </li>
+              
+              <li class="nav-item active">
+                <a href="detail_barang.html">
+                  <i class="fas fa-box"></i>
+                  <p>Detail Barang</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="tambah-barang.html">
+                  <i class="fas fa-box"></i>
+                  <p>Tambah Barang</p>
+                </a>
+              </li>
+
+              <li class="nav-item"> 
+                <a href="tabel-edit-barang.html">
+                  <i class="fas fa-table"></i>
+                  <p>Edit Barang</p>
+                </a>
+              </li>
+
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- End Sidebar -->
+
+		<div class="main-panel">
+			<div class="content">
+				<div class="page-inner">
+					<div class="row">
+							<div class="col-md-6 mb-4">
+								<img src="https://placehold.co/600x400?text=Memuat+Gambar..." alt="Product" class="img-fluid rounded mb-3 product-image" id="mainImage">
+								<div id="thumbnail-container" class="d-flex justify-content-start flex-wrap" style="gap: 10px;">
+								</div>
+							</div>
+							<div class="col-md-6">
+								<h2 class="mb-3"></h2>
+								<p class="text-muted mb-4"></p>
+								<p class="mb-4">Experience premium sound quality and industry-leading noise cancellation with these wireless
+									headphones. Perfect for music lovers and frequent travelers.</p>
+								
+							
+								<div class="mt-4">
+									<h5>Key Features:</h5>
+									<ul>
+										<li>Industry-leading noise cancellation</li>
+										<li>30-hour battery life</li>
+										<li>Touch sensor controls</li>
+										<li>Speak-to-chat technology</li>
+									</ul>
+								</div>
+								<div class="mt-4">
+									<a href="#" id="btn-edit" class="btn btn-warning btn-lg">
+										<i class="fas fa-edit"></i> Edit Data
+									</a>
+								</div>
+							</div>
+						</div>
+					<div class="page-category">Inner page content goes here</div>
+				</div>
+			</div>
+			<footer class="footer">
+				<div class="container-fluid">
+					<nav class="pull-left">
+						<ul class="nav">
+							<li class="nav-item">
+								<a class="nav-link" href="https://www.themekita.com">
+									ThemeKita
+								</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#">
+									Help
+								</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#">
+									Licenses
+								</a>
+							</li>
+						</ul>
+					</nav>
+					<div class="copyright ml-auto">
+						2018, made with <i class="fa fa-heart heart text-danger"></i> by <a href="https://www.themekita.com">ThemeKita</a>
+					</div>				
+				</div>
+			</footer>
+		</div>
+		
+	</div>
+	
+	<!--   Core JS Files   -->
+	<script src="../assets/js/core/jquery.3.2.1.min.js"></script>
+	<script src="../assets/js/core/popper.min.js"></script>
+	<script src="../assets/js/core/bootstrap.min.js"></script>
+
+	<!-- jQuery UI -->
+	<script src="../assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+	<script src="../assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+
+	<!-- jQuery Scrollbar -->
+	<script src="../assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+
+
+	<!-- Chart JS -->
+	<script src="../assets/js/plugin/chart.js/chart.min.js"></script>
+
+	<!-- jQuery Sparkline -->
+	<script src="../assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js"></script>
+
+	<!-- Chart Circle -->
+	<script src="../assets/js/plugin/chart-circle/circles.min.js"></script>
+
+	<!-- Datatables -->
+	<script src="../assets/js/plugin/datatables/datatables.min.js"></script>
+
+	<!-- Bootstrap Notify -->
+	<script src="../assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
+
+	<!-- jQuery Vector Maps -->
+	<script src="../assets/js/plugin/jqvmap/jquery.vmap.min.js"></script>
+	<script src="../assets/js/plugin/jqvmap/maps/jquery.vmap.world.js"></script>
+
+	<!-- Sweet Alert -->
+	<script src="../assets/js/plugin/sweetalert/sweetalert.min.js"></script>
+
+	<!-- Atlantis JS -->
+	<script src="../assets/js/atlantis.min.js"></script>
+
+
+<script>
+function changeImage(event, src) {
+    document.getElementById('mainImage').src = src;
+    document.querySelectorAll('.thumbnail').forEach(thumb => thumb.classList.remove('active'));
+    event.target.classList.add('active');
+}
+</script>
+<script>
+    const API_URL = 'https://script.google.com/macros/s/AKfycby_TxSIHg3z9e9W9MQL6xroa_XKjtSvwfR7NI1a5I922Uoa4Lhai26mY9e6btpQSUh-/exec'; // <-- PASTIKAN INI URL ANDA
+
+    document.addEventListener('DOMContentLoaded', function() {
+        // Ambil ID dari parameter URL
+        const params = new URLSearchParams(window.location.search);
+        const idAset = params.get('id');
+
+        if (idAset) {
+            // Panggil API untuk mendapatkan data detail barang
+            fetch(`${API_URL}?id=${idAset}`)
+                .then(response => response.json())
+                .then(data => {
+                    const barang = data.detail;
+                    const images = data.images;
+
+                    if (barang) {
+                        // Ganti konten teks halaman
+                        document.querySelector('h2.mb-3').textContent = barang[3]; // Nama Barang
+                        document.querySelector('p.text-muted.mb-4').textContent = `NUP: ${barang[2] || 'Tidak ada'}`;
+
+                        // Mengisi Key Features
+                        const featuresList = document.querySelector('.mt-4 ul');
+                        featuresList.innerHTML = `
+                            <li><strong>ID Aset:</strong> ${barang[1]}</li>
+                            <li><strong>Merk:</strong> ${barang[4]}</li>
+                            <li><strong>Kondisi:</strong> ${barang[5]}</li>
+                            <li><strong>Lokasi:</strong> ${barang[10]}</li>
+                            <li><strong>Tanggal Perolehan:</strong> ${barang[7]}</li>
+                        `;
+
+                       // === BAGIAN GAMBAR YANG DIPERBAIKI ===
+						const mainImage = document.getElementById('mainImage');
+						// Gunakan getElementById yang lebih andal
+						const thumbnailContainer = document.getElementById('thumbnail-container'); 
+						
+						if (images && images.length > 0) {
+							mainImage.src = `https://drive.google.com/thumbnail?id=${images[0]}&sz=w800`;
+							mainImage.alt = barang[3];
+							thumbnailContainer.innerHTML = ''; // Kosongkan thumbnail
+
+							images.forEach((imageId, index) => {
+								const thumb = document.createElement('img');
+								thumb.src = `https://drive.google.com/thumbnail?id=${imageId}&sz=w200`;
+								thumb.alt = `Thumbnail ${index + 1}`;
+								thumb.className = 'thumbnail rounded';
+								thumb.style.width = '100px';
+								thumb.style.height = '100px';
+								thumb.style.objectFit = 'cover';
+								thumb.style.cursor = 'pointer';
+								thumb.onclick = function() { 
+									// Saat thumbnail diklik, ganti gambar utama dengan versi resolusi lebih besar
+									mainImage.src = this.src.replace('&sz=w200', '&sz=w800'); 
+								};
+								thumbnailContainer.appendChild(thumb);
+							});
+						} else {
+							mainImage.src = 'https://placehold.co/600x400?text=Gambar+Tidak+Tersedia';
+							thumbnailContainer.innerHTML = '';
+						}
+					 // Beri perintah pada tombol Edit
+						const editButton = document.getElementById('btn-edit');
+						editButton.onclick = function(event) {
+							event.preventDefault(); // Mencegah link pindah halaman sebelum kita suruh
+
+							// Ambil ID aset dari URL halaman ini
+							const params = new URLSearchParams(window.location.search);
+							const idAset = params.get('id');
+
+							// Arahkan ke halaman edit sambil membawa ID aset
+							window.location.href = `edit-barang.html?id=${idAset}`;
+						};
+
+					} else {
+						document.querySelector('h2.mb-3').textContent = 'Data Tidak Ditemukan';
+					}
+                })
+                .catch(error => console.error('Error:', error));
+        }
+    });
+</script>
+</body>
+</html>

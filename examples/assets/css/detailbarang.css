@@ -1,0 +1,6 @@
+#mainImage {
+  max-width: 400px; /* Atur lebar maksimum yang Anda inginkan */
+  height: 400px;     /* Tinggi akan menyesuaikan secara otomatis */
+  display: block;   /* Menghindari spasi ekstra di bawah gambar */
+  margin: 0 auto 1rem; /* Tengah secara horizontal dan beri jarak bawah */
+}
