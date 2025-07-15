@@ -158,7 +158,7 @@
 // ==============================================================================
 // GANTI URL DI BAWAH INI DENGAN URL WEB APP DARI GOOGLE APPS SCRIPT ANDA
 // ==============================================================================
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyY0crqZ-BOJqi1WM2GcJtMQKgQtFwPDa1zP6rR3EO5Yh5jMT1lxJiJVBLWGVIf-SMF/exec';
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby_TxSIHg3z9e9W9MQL6xroa_XKjtSvwfR7NI1a5I922Uoa4Lhai26mY9e6btpQSUh-/exec'; // <-- PERBAIKAN 1: GUNAKAN URL ANDA
 
 const loginForm = document.getElementById('loginForm');
 const alertContainer = document.getElementById('alert-container');
@@ -166,7 +166,7 @@ const loginBtn = document.getElementById('loginBtn');
 const spinner = loginBtn.querySelector('.spinner-border');
 const btnText = loginBtn.querySelector('.btn-text');
 
-// Fungsi untuk menampilkan alert
+// Fungsi untuk menampilkan alert (tidak berubah)
 function showAlert(message, type = 'danger') {
   alertContainer.innerHTML = `
     <div class="alert alert-${type} alert-dismissible fade show" role="alert">
@@ -176,7 +176,7 @@ function showAlert(message, type = 'danger') {
   `;
 }
 
-// Fungsi untuk mengatur loading state
+// Fungsi untuk mengatur loading state (tidak berubah)
 function setLoading(isLoading) {
   if (isLoading) {
     loginBtn.classList.add('loading');
@@ -192,7 +192,7 @@ function setLoading(isLoading) {
 }
 
 // Event listener untuk form login
-loginForm.addEventListener('submit', async (e) => {
+loginForm.addEventListener('submit', function(e) {
   e.preventDefault();
   
   const email = document.getElementById('email').value;
@@ -201,62 +201,55 @@ loginForm.addEventListener('submit', async (e) => {
   setLoading(true);
   alertContainer.innerHTML = '';
   
-  try {
-    // Kirim data login ke Google Apps Script
-    const formData = new FormData();
-    formData.append('action', 'login');
-    formData.append('email', email);
-    formData.append('password', password);
+  // --- PERBAIKAN 2: UBAH CARA PENGIRIMAN DATA MENJADI JSON ---
+  // Kita buat objek JavaScript biasa
+  const dataToSend = {
+    action: 'login',
+    email: email,
+    password: password
+  };
+
+  fetch(SCRIPT_URL, {
+    method: 'POST',
+    body: JSON.stringify(dataToSend) // Kirim sebagai string JSON
+  })
+  .then(response => response.json())
+  .then(result => {
     
-    const response = await fetch(SCRIPT_URL, {
-      method: 'POST',
-      body: formData
-    });
-    
-    const result = await response.json();
-    
-    if (result.result === 'success') {
+    // --- PERBAIKAN 3: SESUAIKAN PENGECEKAN RESPONS ---
+    // API kita mengirim 'status', bukan 'result'
+    if (result.status === 'sukses') {
       showAlert('Login berhasil! Mengalihkan ke dashboard...', 'success');
       
-      // Simpan info login di sessionStorage (tidak menggunakan localStorage)
       sessionStorage.setItem('isLoggedIn', 'true');
       sessionStorage.setItem('userEmail', email);
-      
-      // Redirect ke dashboard setelah 2 detik
+      sessionStorage.setItem('userRole', result.role); // Simpan peran pengguna
+
+      // --- PERBAIKAN 4: ARAHKAN KE DASHBOARD YANG BENAR ---
       setTimeout(() => {
-        window.location.href = 'index.html'; // Ganti dengan halaman dashboard Anda
-      }, 2000);
+        if (result.role === 'superadmin') {
+          // Ganti 'superadmin_dashboard.html' jika namanya berbeda
+          window.location.href = 'superadmin_dashboard.html'; 
+        } else {
+          window.location.href = 'index.html';
+        }
+      }, 1500);
       
     } else {
       showAlert(result.message || 'Email atau password salah!');
+      setLoading(false);
     }
     
-  } catch (error) {
+  })
+  .catch(error => {
     console.error('Error:', error);
     showAlert('Terjadi kesalahan. Silakan coba lagi.');
-  } finally {
     setLoading(false);
-  }
+  });
 });
 
-// Fungsi untuk hash password (implementasi sederhana)
-function hashPassword(password) {
-  // Implementasi hash sederhana - dalam produksi gunakan library yang lebih aman
-  let hash = 0;
-  for (let i = 0; i < password.length; i++) {
-    const char = password.charCodeAt(i);
-    hash = ((hash << 5) - hash) + char;
-    hash = hash & hash; // Convert to 32bit integer
-  }
-  return hash.toString();
-}
-
-// Cek apakah user sudah login
-window.addEventListener('load', () => {
-  if (sessionStorage.getItem('isLoggedIn') === 'true') {
-    window.location.href = 'index.html';
-  }
-});
+// Hapus fungsi hashPassword dan pengecekan login di sini karena sudah tidak relevan
+// Kita akan tangani semua di backend dan dengan logika di atas
 </script>
 </body>
 </html>

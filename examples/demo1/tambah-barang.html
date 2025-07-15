@@ -379,6 +379,12 @@
                   <p>Edit Barang</p>
                 </a>
               </li>
+			  <li class="nav-item" id="menu-superadmin" style="display:none;">
+				<a href="superadmin_dashboard.html">
+					<i class="fas fa-users-cog"></i>
+					<p>Manage Admin</p>
+				</a>
+			</li>
 
             </ul>
           </div>
@@ -540,9 +546,20 @@
     const submitButton = document.getElementById('btn-simpan');
 	const batalButton = document.getElementById('btn-batal'); // <-- Tambahkan ini
 
+      // ===== SNIPPET UNTUK CEK PERAN SUPER ADMIN =====
+        const userRole = sessionStorage.getItem('userRole');
+        if (userRole === 'superadmin') {
+            const menuSuperAdmin = document.getElementById('menu-superadmin');
+            if (menuSuperAdmin) {
+                menuSuperAdmin.style.display = 'block';
+            }
+        }
 
     form.addEventListener('submit', function(event) {
         event.preventDefault();
+
+		
+        // ===============================================
 
         // === EFEK LOADING DIMULAI ===
         // Simpan teks asli tombol

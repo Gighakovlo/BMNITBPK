@@ -3,25 +3,6 @@
 <head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<title>Atlantis Lite - Bootstrap 4 Admin Dashboard</title>
-	<link rel="stylesheet" href="../assets/css/bootstrap.min.css">
-	<link rel="stylesheet" href="../assets/css/atlantis.min.css">
-	<link rel="stylesheet" href="../assets/css/bootstrap.min.css">
-	<link rel="stylesheet" href="../assets/css/atlantis.min.css">
-
-	<link rel="stylesheet" href="../assets/css/detailbarang.css"> 
-
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
-
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
-	<style>
-    .thumbnail {
-        width: 100px; height: 100px; object-fit: cover;
-        cursor: pointer; opacity: 0.6; transition: opacity 0.2s;
-    }
-    .thumbnail:hover { opacity: 1; }
-    .thumbnail.active { opacity: 1; border: 2px solid #0d6efd; }
-    .thumbnail-container { display: flex; gap: 10px; }
-	</style>
 	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
 	<link rel="icon" href="../assets/img/icon.ico" type="image/x-icon"/>
 
@@ -80,10 +61,10 @@
 
 			<!-- Navbar Header -->
 			 <nav 
-				id="navbar-bpk" 
-				class="navbar navbar-header navbar-expand-lg brown-bg"
-				style="background-color: #D4AF37 !important;"
-				>
+			id="navbar-bpk" 
+			class="navbar navbar-header navbar-expand-lg brown-bg"
+			style="background-color: #D4AF37 !important;"
+			>
 				
 				<div class="container-fluid">
 					<div class="collapse" id="search-nav">
@@ -377,13 +358,13 @@
                 <h4 class="text-section">Components</h4>
               </li>
               
-              <li class="nav-item active">
+              <li class="nav-item">
                 <a href="detail_barang.html">
                   <i class="fas fa-box"></i>
                   <p>Detail Barang</p>
                 </a>
               </li>
-			  
+
               <li class="nav-item">
                 <a href="tambah-barang.html">
                   <i class="fas fa-box"></i>
@@ -397,12 +378,14 @@
                   <p>Edit Barang</p>
                 </a>
               </li>
-			<li class="nav-item" id="menu-superadmin" style="display:none;">
-				<a href="superadmin_dashboard.html">
-					<i class="fas fa-users-cog"></i>
-					<p>Manage Admin</p>
-				</a>
-			</li>
+
+				<li class="nav-item active" id="menu-superadmin" style="display:none;">
+					<a href="superadmin_dashboard.html">
+						<i class="fas fa-users-cog"></i>
+						<p>Manage Admin</p>
+					</a>
+				</li>
+
             </ul>
           </div>
         </div>
@@ -413,37 +396,35 @@
 			<div class="content">
 				<div class="page-inner">
 					<div class="row">
-							<div class="col-md-6 mb-4">
-								<img src="https://placehold.co/600x400?text=Memuat+Gambar..." alt="Product" class="img-fluid rounded mb-3 product-image" id="mainImage">
-								<div id="thumbnail-container" class="d-flex justify-content-start flex-wrap" style="gap: 10px;">
-								</div>
+						<div class="col-md-12">
+						<div class="card">
+							<div class="card-header">
+							<div class="d-flex align-items-center">
+								<h4 class="card-title">Manajemen Akses Admin</h4>
+								<button class="btn btn-primary btn-round ml-auto" id="btn-tambah-admin">
+								<i class="fa fa-plus"></i>
+								Tambah Admin
+								</button>
 							</div>
-							<div class="col-md-6">
-								<h2 class="mb-3"></h2>
-								<p class="text-muted mb-4"></p>
-								<p class="mb-4">Experience premium sound quality and industry-leading noise cancellation with these wireless
-									headphones. Perfect for music lovers and frequent travelers.</p>
-								
-							
-								<div class="mt-4">
-									<h5>Key Features:</h5>
-									<ul>
-										<li>Industry-leading noise cancellation</li>
-										<li>30-hour battery life</li>
-										<li>Touch sensor controls</li>
-										<li>Speak-to-chat technology</li>
-									</ul>
-								</div>
-								<div class="mt-4">
-									<a href="#" id="btn-edit" class="btn btn-warning btn-lg">
-										<i class="fas fa-edit"></i> Edit Data
-									</a>
-								</div>
+							</div>
+							<div class="card-body">
+							<div class="table-responsive">
+								<table id="tabel-admin" class="display table table-hover" style="width: 100%;">
+								<thead>
+									<tr>
+									<th>Email Admin</th>
+									<th style="width: 10%">Action</th>
+									</tr>
+								</thead>
+								<tbody id="tabel-admin-body">
+									</tbody>
+								</table>
+							</div>
 							</div>
 						</div>
-					<div class="page-category">Inner page content goes here</div>
+						</div>
+					</div>
 				</div>
-			</div>
 			<footer class="footer">
 				<div class="container-fluid">
 					<nav class="pull-left">
@@ -473,7 +454,6 @@
 		</div>
 		
 	</div>
-	
 	<!--   Core JS Files   -->
 	<script src="../assets/js/core/jquery.3.2.1.min.js"></script>
 	<script src="../assets/js/core/popper.min.js"></script>
@@ -511,105 +491,115 @@
 
 	<!-- Atlantis JS -->
 	<script src="../assets/js/atlantis.min.js"></script>
-
-
-<script>
-function changeImage(event, src) {
-    document.getElementById('mainImage').src = src;
-    document.querySelectorAll('.thumbnail').forEach(thumb => thumb.classList.remove('active'));
-    event.target.classList.add('active');
-}
-</script>
-<script>
+	<script>
     const API_URL = 'https://script.google.com/macros/s/AKfycby_TxSIHg3z9e9W9MQL6xroa_XKjtSvwfR7NI1a5I922Uoa4Lhai26mY9e6btpQSUh-/exec'; // <-- PASTIKAN INI URL ANDA
+    const tabelBody = document.getElementById('tabel-admin-body');
 
-    document.addEventListener('DOMContentLoaded', function() {
-
-		      // ===== SNIPPET UNTUK CEK PERAN SUPER ADMIN =====
-        const userRole = sessionStorage.getItem('userRole');
-        if (userRole === 'superadmin') {
-            const menuSuperAdmin = document.getElementById('menu-superadmin');
-            if (menuSuperAdmin) {
-                menuSuperAdmin.style.display = 'block';
-            }
-        }
-        // ===============================================
-
-        // Ambil ID dari parameter URL
-        const params = new URLSearchParams(window.location.search);
-        const idAset = params.get('id');
-
-        if (idAset) {
-            // Panggil API untuk mendapatkan data detail barang
-            fetch(`${API_URL}?id=${idAset}`)
-                .then(response => response.json())
-                .then(data => {
-                    const barang = data.detail;
-                    const images = data.images;
-
-                    if (barang) {
-                        // Ganti konten teks halaman
-                        document.querySelector('h2.mb-3').textContent = barang[3]; // Nama Barang
-                        document.querySelector('p.text-muted.mb-4').textContent = `NUP: ${barang[2] || 'Tidak ada'}`;
-
-                        // Mengisi Key Features
-                        const featuresList = document.querySelector('.mt-4 ul');
-                        featuresList.innerHTML = `
-                            <li><strong>ID Aset:</strong> ${barang[1]}</li>
-                            <li><strong>Merk:</strong> ${barang[4]}</li>
-                            <li><strong>Kondisi:</strong> ${barang[5]}</li>
-                            <li><strong>Lokasi:</strong> ${barang[10]}</li>
-                            <li><strong>Tanggal Perolehan:</strong> ${barang[7]}</li>
+    // --- FUNGSI UNTUK MEMUAT ULANG DAFTAR ADMIN ---
+    function muatDaftarAdmin() {
+        fetch(`${API_URL}?view=admins`)
+            .then(response => response.json())
+            .then(result => {
+                if (result.status === 'sukses') {
+                    tabelBody.innerHTML = ''; // Kosongkan tabel
+                    result.data.forEach(email => {
+                        const baris = document.createElement('tr');
+                        baris.innerHTML = `
+                            <td>${email}</td>
+                            <td>
+                                <div class="form-button-action">
+                                    <button type="button" class="btn btn-link btn-danger btn-delete-admin" data-email="${email}" title="Hapus Admin">
+                                        <i class="fa fa-times"></i>
+                                    </button>
+                                </div>
+                            </td>
                         `;
+                        tabelBody.appendChild(baris);
+                    });
+                }
+            })
+            .catch(err => console.error('Error mengambil daftar admin:', err));
+    }
 
-                       // === BAGIAN GAMBAR YANG DIPERBAIKI ===
-						const mainImage = document.getElementById('mainImage');
-						// Gunakan getElementById yang lebih andal
-						const thumbnailContainer = document.getElementById('thumbnail-container'); 
-						
-						if (images && images.length > 0) {
-							mainImage.src = `https://drive.google.com/thumbnail?id=${images[0]}&sz=w800`;
-							mainImage.alt = barang[3];
-							thumbnailContainer.innerHTML = ''; // Kosongkan thumbnail
-
-							images.forEach((imageId, index) => {
-								const thumb = document.createElement('img');
-								thumb.src = `https://drive.google.com/thumbnail?id=${imageId}&sz=w200`;
-								thumb.alt = `Thumbnail ${index + 1}`;
-								thumb.className = 'thumbnail rounded';
-								thumb.style.width = '100px';
-								thumb.style.height = '100px';
-								thumb.style.objectFit = 'cover';
-								thumb.style.cursor = 'pointer';
-								thumb.onclick = function() { 
-									// Saat thumbnail diklik, ganti gambar utama dengan versi resolusi lebih besar
-									mainImage.src = this.src.replace('&sz=w200', '&sz=w800'); 
-								};
-								thumbnailContainer.appendChild(thumb);
-							});
-						} else {
-							mainImage.src = 'https://placehold.co/600x400?text=Gambar+Tidak+Tersedia';
-							thumbnailContainer.innerHTML = '';
-						}
-					 // Beri perintah pada tombol Edit
-						const editButton = document.getElementById('btn-edit');
-						editButton.onclick = function(event) {
-							event.preventDefault(); // Mencegah link pindah halaman sebelum kita suruh
-
-							// Ambil ID aset dari URL halaman ini
-							const params = new URLSearchParams(window.location.search);
-							const idAset = params.get('id');
-
-							// Arahkan ke halaman edit sambil membawa ID aset
-							window.location.href = `edit-barang.html?id=${idAset}`;
-						};
-
-					} else {
-						document.querySelector('h2.mb-3').textContent = 'Data Tidak Ditemukan';
-					}
-                })
-                .catch(error => console.error('Error:', error));
+    // --- FUNGSI UTAMA YANG BERJALAN SAAT HALAMAN DIMUAT ---
+    document.addEventListener('DOMContentLoaded', function() {
+        const userRole = sessionStorage.getItem('userRole');
+        if (userRole !== 'superadmin') {
+            alert('Akses ditolak. Hanya Super Admin yang bisa mengakses halaman ini.');
+            window.location.href = 'index.html';
+            return;
         }
+
+        const menuSuperAdmin = document.getElementById('menu-superadmin');
+        if(menuSuperAdmin) menuSuperAdmin.style.display = 'block';
+
+        // Panggil fungsi untuk mengisi tabel saat halaman pertama kali dimuat
+        muatDaftarAdmin();
+    });
+
+    // === BAGIAN BARU: EVENT LISTENER UNTUK TOMBOL TAMBAH ADMIN ===
+    const btnTambahAdmin = document.getElementById('btn-tambah-admin');
+
+    btnTambahAdmin.addEventListener('click', function() {
+        swal({
+            title: 'Tambah Admin Baru',
+            // Kita gunakan SweetAlert untuk membuat form input
+            content: {
+                element: "div",
+                attributes: {
+                    innerHTML: `
+                        <div class="form-group">
+                            <input type="email" id="swal-input-email" class="form-control" placeholder="Email Admin">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" id="swal-input-password" class="form-control" placeholder="Password Awal">
+                        </div>
+                    `
+                },
+            },
+           buttons: {
+				cancel: {
+					text: "Batal",
+					value: null,
+					visible: true,
+					className: "btn btn-danger", // <-- Kita tambahkan kelas ini
+					closeModal: true,
+				},
+				confirm: {
+					text: "Simpan",
+					value: true,
+					visible: true,
+					className: "btn btn-success",
+					closeModal: true
+				}
+			},
+        }).then((isConfirm) => {
+            if (isConfirm) {
+                const email = document.getElementById('swal-input-email').value;
+                const password = document.getElementById('swal-input-password').value;
+
+                if (!email || !password) {
+                    swal("Gagal!", "Email dan Password tidak boleh kosong.", "error");
+                    return;
+                }
+
+                // Kirim data admin baru ke API
+                fetch(API_URL, {
+                    method: 'POST',
+                    body: JSON.stringify({ action: 'tambahAdmin', email: email, password: password })
+                })
+                .then(res => res.json())
+                .then(data => {
+                    if(data.status === 'sukses'){
+                        swal("Berhasil!", "Admin baru telah berhasil ditambahkan.", "success", { buttons: false, timer: 2000 });
+                        // Muat ulang daftar admin untuk menampilkan data baru
+                        muatDaftarAdmin();
+                    } else {
+                        swal("Gagal!", "Terjadi kesalahan: " + data.message, "error");
+                    }
+                }).catch(err => swal("Error!", "Gagal terhubung ke server.", "error"));
+            }
+        });
     });
 </script>
 </body>
