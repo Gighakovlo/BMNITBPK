@@ -298,7 +298,7 @@ body {
 
 .logo-header {
   float: left;
-  width: 250px;
+  width: 250px; 
   height: 62px;
   line-height: 60px;
   color: #333333;
@@ -318,7 +318,7 @@ body {
       text-decoration: none; }
     .logo-header .big-logo .logo-img {
       width: 35px;
-      height: 35px; }
+      height: auto; }
   .logo-header .logo {
     color: #575962;
     opacity: 1;
@@ -329,7 +329,8 @@ body {
     .logo-header .logo .navbar-brand {
       padding-top: 0px;
       padding-bottom: 0px;
-      margin-right: 0px; }
+      margin-right: 0px; 
+    }
   .logo-header .nav-toggle {
     position: absolute;
     top: 0;
@@ -8613,7 +8614,8 @@ div.table-responsive > div.dataTables_wrapper > div.row {
       margin-left: auto; }
     .logo-header .navbar-brand {
       position: unset !important;
-      margin-right: 0px; }
+      margin-right: 0px; 
+    }
 
   .nav-search {
     width: 100%;
@@ -8958,5 +8960,9 @@ body {
   background: #F25961 !important;
   background: -webkit-linear-gradient(legacy-direction(-45deg), #E80A15, #F25961) !important;
   background: linear-gradient(-45deg, #E80A15, #F25961) !important; }
+.navbar-brand {
+  width: 150px; /* Atur lebar logo sesuai keinginan Anda */
+  height: auto;  /* Biarkan tinggi menyesuaikan agar gambar tidak gepeng */
+}
 
 /*# sourceMappingURL=atlantis.css.map */
